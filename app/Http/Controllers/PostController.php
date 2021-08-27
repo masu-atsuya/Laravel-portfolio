@@ -11,6 +11,7 @@ class PostController extends Controller
 {
     //
 
+    //testです
     //最初の画面
     public function start()
     {
