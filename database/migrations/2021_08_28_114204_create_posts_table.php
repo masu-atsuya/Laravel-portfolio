@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('game_id');
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('condition_id');
+            $table->softDeletes();
             $table->string('title',100);
             $table->longText('content');
             $table->string('contact',100);

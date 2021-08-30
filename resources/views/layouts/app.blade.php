@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/layout.css" rel="stylesheet">
 </head>
 
 <body class="pb-5">
@@ -93,7 +94,7 @@
             @yield('content')
         </main>
     </div>
-    <ul class="nav nav-pills nav-fill d-block d-sm-none fixed-bottom d-flex border">
+    <ul class="nav nav-pills nav-fill d-block d-sm-none fixed-bottom d-flex border bg-light">
         <li class="nav-item">
             <a class="nav-link" href="/home">投稿一覧</a>
         </li>
