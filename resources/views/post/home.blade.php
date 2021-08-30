@@ -3,12 +3,12 @@
 @section('content')
 
 
-
+@include('layouts.header')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">全ての投稿</div>
+                <div class="card-header">全ての投稿、あとでここは消す</div>
 
                 <div class="card-body">
                     @foreach($posts as $post)
