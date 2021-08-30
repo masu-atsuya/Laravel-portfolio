@@ -95,19 +95,19 @@
     </div>
     <ul class="nav nav-pills nav-fill d-block d-sm-none fixed-bottom d-flex border">
         <li class="nav-item">
-            <a class="nav-link" href="#">投稿一覧</a>
+            <a class="nav-link" href="/home">投稿一覧</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">投稿作成</a>
+            <a class="nav-link" href="/create">投稿作成</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">応募状況</a>
+            <a class="nav-link" href="/matching">応募状況</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">チャット</a>
+            <a class="nav-link" href="/chat">チャット</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">マイ</a>
+            <a class="nav-link" href="/my">マイ</a>
         </li>
     </ul>
 </body>
