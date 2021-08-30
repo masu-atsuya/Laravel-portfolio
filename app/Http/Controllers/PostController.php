@@ -25,7 +25,7 @@ class PostController extends Controller
 
         $posts = Post::select('posts.*')
             ->where('user_id', '!=', \Auth::id())
-            ->whereNull('deleted_at')
+            // ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->get();
 
