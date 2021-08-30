@@ -13,10 +13,10 @@ class PostController extends Controller
 
  
     //最初の画面
-    public function start()
+    public function top()
     {
 
-        return view('start');
+        return view('top');
     }
 
     //投稿一覧を表示

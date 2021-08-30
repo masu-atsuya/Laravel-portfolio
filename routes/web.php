@@ -21,7 +21,7 @@ use App\Http\Controllers\PostController;
 Auth::routes();
 
 //最初
-Route::get('/', [PostController::class, 'start'])->name('start');
+Route::get('/', [PostController::class, 'top'])->name('top');
 
 //自分以外の全ての投稿一覧が見れるようにする
 Route::get('/home', [PostController::class, 'home'])->name('home');
