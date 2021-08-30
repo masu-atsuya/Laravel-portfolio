@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Post;
 use App\Models\Game;
+use App\Models\Type;
+use App\Models\Condition;
 
 class PostController extends Controller
 {
@@ -40,25 +42,40 @@ class PostController extends Controller
     public function create()
     {
         $games = Game::all();
-        dd($games);
+        $types = Type::all();
+        $conditions = Condition::all();
 
-        return view('post.create',compact('games'));
+
+        return view('post.create',compact('games','types','conditions'));
     }
 
     //投稿作成ページ
     public function store(Request $request)
     {
         $posts = $request->all();
-
+        dd($posts);
+        $image = $request->file('image');
+        // dd($image);
+        // 画像がアップロードされていれば、storageに保存
+        if($request->hasFile('image')){
+            $path = \Storage::put('/public', $image);
+            $path = explode('/', $path);
+        }else{
+            $path = null;
+        }
         Post::insert([
-            'content' => $posts['content'],
             'user_id' => \Auth::id(),
-            'type' => $posts['type'],
-            'game_name' => $posts['game_name'],
-            'conditions' => $posts['conditions'],
-            'others' => $posts['others']
+            'title' => $posts['title'],
+            'game_id' => $posts['game_id'],
+            'type_id' => $posts['type_id'],
+            'content' => $posts['content'],
+            'contact' => $posts['contact'],
+            'condition_id' => $posts['condition_id'],
+            'image' => $path[1],
 
         ]);
+
+
 
         return redirect(route('home'));
     }

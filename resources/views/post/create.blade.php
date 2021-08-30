@@ -8,7 +8,7 @@
 
     <div>
 
-        <form class="card-body" action="{{route('store')}}" method="POST">
+        <form class="card-body" action="{{route('store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="title">投稿タイトル</label>
@@ -16,28 +16,24 @@
             </div>
             <div class="form-group">
                 <label for="game_id">ゲーム名</label>
-                <select required class="form-control" id="game_id">
+                <select required class="form-control" id="game_id" name="game_id">
                     <option value="" selected>
                         選択してください
                     </option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    @foreach($games as $game)
+                    <option value="{{$game['id']}}">{{$game['name']}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="type_id">応募条件</label>
-                <select required class="form-control" id="type_id">
+                <label for="type_id">募集タイプ</label>
+                <select required class="form-control" id="type_id" name="type_id">
                     <option value="" selected>
                         選択してください
                     </option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    @foreach($types as $type)
+                    <option value="{{$type['id']}}">{{$type['name']}}</option>
+                    @endforeach
                 </select>
             </div>
             <div for="content" class="form-group">
@@ -45,32 +41,30 @@
                 <textarea class="form-control" name="content" id="content" cols="10" rows="8" aria-describedby="emailHelp" placeholder="例：一緒に楽しく遊びましょう！"></textarea>
             </div>
             <div class="form-group">
-                <label for="contact">連絡手段</label>
-                <input type="text" class="form-control" id="contact" name="others" placeholder="例：初心者ですがよろしくお願いします">
+                <label for="text">連絡手段</label>
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="例：初心者ですがよろしくお願いします">
             </div>
 
             <div class="form-group">
                 <label for="condition_id">応募条件</label>
-                <select required class="form-control" id="condition_id">
+                <select required class="form-control" id="condition_id" name="condition_id">
                     <option value="" selected>
                         選択してください
                     </option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    @foreach($conditions as $condition)
+                    <option value="{{$condition['id']}}">{{$condition['name']}}</option>
+                    @endforeach
                 </select>
             </div>
-       
 
 
-            <div class="card-body p-0">
-                <svg class="bd-placeholder-img" width="100%" height="145" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image">
-                    <title>Placeholder</title>
-                    <rect fill="#868e96" width="100%" height="100%" /><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image</text>
-                </svg>
-            </div><!-- /.card-body -->
+
+            <div class="form-group">
+                <label for="image">画像登録</label>
+                <input type="file" class="form-control-file" name='image' id="image">
+
+               
+            </div>
             <div class="col-md-6 text-center my-5">
                 <button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
                     新規会員登録
