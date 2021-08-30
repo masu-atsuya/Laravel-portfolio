@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 
 use App\Models\Post;
+use App\Models\Game;
 
 class PostController extends Controller
 {
@@ -38,7 +39,10 @@ class PostController extends Controller
     //投稿作成ページを表示
     public function create()
     {
-        return view('post.create');
+        $games = Game::all();
+        dd($games);
+
+        return view('post.create',compact('games'));
     }
 
     //投稿作成ページ
