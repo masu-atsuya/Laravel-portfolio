@@ -14,15 +14,15 @@
                     <div class="card mb-3 mx-auto" style="max-width: 1000px;">
                         <div class="row no-gutters">
                             
-                                <img src="{{ '/storage/' . $post['image']}}" class=" w-50" />
+                                <img src="{{ '/storage/' . $post['image']}}" class="w-50 img-fluid" />
                             
                             <div class="w-50">
-                                <div class="card-body">
+                                <div class="pl-3">
                                     <p class="card-title">{{$post['content']}}</p>
                                     <p class="card-title">name:{{$post['content']}}</p>
                                     <p class="card-title">game:{{$post->game->name}}</p>
-                                    <p class="card-title">game:{{$post->type->name}}</p>
-                                    <p class="card-title">game:{{$post->condition->name}}</p>
+                                    <p class="card-title">:{{$post->type->name}}</p>
+                                    <p class="card-title">:{{$post->condition->name}}</p>
                                 </div>
                             </div>
                         </div>

@@ -26,11 +26,12 @@ class PostController extends Controller
     public function home()
     {
 
-        $posts = Post::with('game')
+        $posts = Post::with('game','type','condition')
             ->where('user_id', '=', \Auth::id())
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->get();
+
 
         
 

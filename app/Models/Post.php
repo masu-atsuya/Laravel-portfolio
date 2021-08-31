@@ -13,4 +13,12 @@ class Post extends Model
     {
         return $this->belongsTo(Game::class);
     }
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+    public function condition()
+    {
+        return $this->belongsTo(Condition::class);
+    }
 }
