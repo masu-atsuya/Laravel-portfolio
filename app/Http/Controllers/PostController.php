@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     //
 
- 
+
     //最初の画面
     public function top()
     {
@@ -26,12 +26,13 @@ class PostController extends Controller
     public function home()
     {
 
-        $posts = Post::select('posts.*')
-            ->where('user_id', '!=', \Auth::id())
+        $posts = Post::with('game')
+            ->where('user_id', '=', \Auth::id())
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->get();
 
+        
 
 
         return view('post.home', compact('posts'));
@@ -46,21 +47,20 @@ class PostController extends Controller
         $conditions = Condition::all();
 
 
-        return view('post.create',compact('games','types','conditions'));
+        return view('post.create', compact('games', 'types', 'conditions'));
     }
 
     //投稿作成ページ
     public function store(Request $request)
     {
         $posts = $request->all();
-        dd($posts);
         $image = $request->file('image');
         // dd($image);
         // 画像がアップロードされていれば、storageに保存
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $path = \Storage::put('/public', $image);
             $path = explode('/', $path);
-        }else{
+        } else {
             $path = null;
         }
         Post::insert([
@@ -90,31 +90,32 @@ class PostController extends Controller
             ->get();
 
 
-        return view('post.list',compact('posts'));
+        return view('post.list', compact('posts'));
     }
 
     public function edit($id)
     {
         $edit_post = Post::find($id);
-        if(is_null($edit_post)){
-            \Session::flash('err_msg','投稿データがありません。');
+        if (is_null($edit_post)) {
+            \Session::flash('err_msg', '投稿データがありません。');
             return redirect(route('list'));
         }
 
-        return view('post.edit',compact('edit_post'));
+        return view('post.edit', compact('edit_post'));
     }
 
     public function update(Request $request)
     {
         $posts = $request->all();
 
-        Post::where('id',$posts['id'])->update([
+        Post::where('id', $posts['id'])->update([
             'type' => $posts['type'],
             'game_name' => $posts['game_name'],
             'conditions' => $posts['conditions'],
             'content' => $posts['content'],
             'others' => $posts['others'],
-            'updated_at' => date("Y-m-d H:i:s",time())]);
+            'updated_at' => date("Y-m-d H:i:s", time())
+        ]);
 
         return redirect(route('home'));
     }
@@ -122,8 +123,9 @@ class PostController extends Controller
     {
         $posts = $request->all();
 
-        Post::where('id',$posts['id'])->update([
-            'deleted_at' => date("Y-m-d H:i:s",time())]);
+        Post::where('id', $posts['id'])->update([
+            'deleted_at' => date("Y-m-d H:i:s", time())
+        ]);
 
         return redirect(route('home'));
     }
