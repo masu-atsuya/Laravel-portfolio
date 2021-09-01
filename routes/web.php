@@ -36,7 +36,10 @@ Route::post('/store', [PostController::class, 'store'])->name('store');
 Route::get('/list', [PostController::class, 'list'])->name('list');
 
 //自分の投稿の詳細画面
-Route::get('/edit/{id}', [PostController::class, 'edit'])->name('edit');
+// Route::get('/edit/{id}', [PostController::class, 'edit'])->name('edit');
+
+//自分の投稿の詳細画面
+Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
 
 //投稿の編集
 Route::post('/update', [PostController::class, 'update'])->name('update');

@@ -94,15 +94,15 @@ class PostController extends Controller
         return view('post.list', compact('posts'));
     }
 
-    public function edit($id)
+    public function show($id)
     {
-        $edit_post = Post::find($id);
-        if (is_null($edit_post)) {
+        $post = Post::find($id);
+        if (is_null($post)) {
             \Session::flash('err_msg', '投稿データがありません。');
-            return redirect(route('list'));
+            return redirect(route('home'));
         }
 
-        return view('post.edit', compact('edit_post'));
+        return view('post.show', compact('post'));
     }
 
     public function update(Request $request)
