@@ -32,11 +32,10 @@ Route::get('/create', [PostController::class, 'create'])->name('create');
 //投稿画面の情報を渡す
 Route::post('/store', [PostController::class, 'store'])->name('store');
 
-//自分の投稿一覧
-Route::get('/list', [PostController::class, 'list'])->name('list');
+//マッチング画面
+Route::get('/matching', [PostController::class, 'matching'])->name('matching');
 
-//自分の投稿の詳細画面
-// Route::get('/edit/{id}', [PostController::class, 'edit'])->name('edit');
+
 
 //自分の投稿の詳細画面
 Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
@@ -47,3 +46,11 @@ Route::post('/update', [PostController::class, 'update'])->name('update');
 //投稿の削除
 Route::post('/destroy', [PostController::class, 'destroy'])->name('destroy');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

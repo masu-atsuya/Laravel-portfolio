@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,14 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="/css/layout.css" rel="stylesheet">
 </head>
-
-<body class="pb-5">
+<body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm d-none d-sm-block">
-            <div class="container ">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -39,78 +36,48 @@
 
                     </ul>
 
-                    @if (Route::has('login'))
-
-
-                    @endif
-
+                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
-                        </li>
-                        @endif
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
 
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('新規登録') }}</a>
-                        </li>
-                        @endif
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('ログアウト') }}
-                                </a>
+                                        {{ __('Logout') }}
+                                    </a>
 
-                                <a href="/create" class="dropdown-item">
-                                    投稿作成
-                                </a>
-                                <a href="/list" class="dropdown-item">
-                                    投稿編集
-                                </a>
-                                <a href="/create" class="dropdown-item">
-                                    チャット
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-        <main class="">
+
+        <main class="py-4">
             @yield('content')
         </main>
     </div>
-    <ul class="nav nav-pills nav-fill d-block d-sm-none fixed-bottom d-flex border bg-light">
-        <li class="nav-item">
-            <a class="nav-link" href="/home">投稿一覧</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/create">投稿作成</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/matching">応募状況</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/chat">チャット</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/my">マイ</a>
-        </li>
-    </ul>
 </body>
-
 </html>

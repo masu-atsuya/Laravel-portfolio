@@ -81,19 +81,6 @@ class PostController extends Controller
         return redirect(route('home'));
     }
 
-    //自分の投稿を編集
-    public function list()
-    {
-        $posts = Post::select('posts.*')
-            ->where('user_id', '=', \Auth::id())
-            ->whereNull('deleted_at')
-            ->orderBy('updated_at', 'DESC')
-            ->get();
-
-
-        return view('post.list', compact('posts'));
-    }
-
     public function show($id)
     {
         $post = Post::find($id);
@@ -103,6 +90,12 @@ class PostController extends Controller
         }
 
         return view('post.show', compact('post'));
+    }
+
+    public function matching()
+    {
+
+        return view('post.matching');
     }
 
     public function update(Request $request)
