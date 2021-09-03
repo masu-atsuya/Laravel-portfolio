@@ -97,6 +97,15 @@ class PostController extends Controller
 
         return view('post.matching');
     }
+    public function chat()
+    {
+        
+        $messages = Post::with('game','type','condition')
+        ->where('user_id', '=', \Auth::id())
+        ->get();
+
+        return view('post.chat',compact('messages'));
+    }
 
     public function update(Request $request)
     {

@@ -35,6 +35,9 @@ Route::post('/store', [PostController::class, 'store'])->name('store');
 //マッチング画面
 Route::get('/matching', [PostController::class, 'matching'])->name('matching');
 
+//マッチング画面
+Route::get('/chat', [PostController::class, 'chat'])->name('chat');
+
 
 
 //自分の投稿の詳細画面
@@ -45,12 +48,3 @@ Route::post('/update', [PostController::class, 'update'])->name('update');
 
 //投稿の削除
 Route::post('/destroy', [PostController::class, 'destroy'])->name('destroy');
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -6,10 +6,9 @@
 
 @include('layouts.header')
 
-<div class="profile-head position-relative">
-
+<div class="profile-head position-relative ">
     <img src="{{ '/storage/' . $post['image']}}" class="profile-img img-fluid" />
-    <div class="thumbnail-wrap position-absolute translate-middle">
+    <div class="thumbnail-wrap position-absolute translate-middle ">
         <img src="{{ '/storage/' . $post['image']}}" class="  rounded-circle img-thumbnail mx-auto d-block" />
     </div>
 </div><!-- /.profile-head -->

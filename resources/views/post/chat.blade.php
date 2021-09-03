@@ -11,6 +11,8 @@
 <div id="app">
 @include('layouts.comment')
 @include('layouts.comment')
+@include('layouts.comment')
+@include('layouts.comment')
 
 
 </div>

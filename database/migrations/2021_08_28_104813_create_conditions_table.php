@@ -17,7 +17,7 @@ class CreateConditionsTable extends Migration
             $table->unsignedBigInteger('id',true);
             $table->string('name',100);
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
-            $table->timestamp('crated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
