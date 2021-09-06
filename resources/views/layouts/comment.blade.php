@@ -1,5 +1,15 @@
 <div class="card">
-  <div class="card-body">
-    This is some text within a card body.
+    <div class="card-body">
+    
+    </div>
   </div>
-</div>
+@foreach($messages as $message)
+<div class="container">
+  <div class="card rounded-3 bg-info">
+    <div class="card-body text-white">
+      {{$message->comment}}
+    </div>
+  </div>
+  <p class="">{{$message->created_at}}</p>
+</div><!-- /.container -->
+@endforeach

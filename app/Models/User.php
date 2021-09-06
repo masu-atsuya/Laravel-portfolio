@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+
+    public function reaction()
+    {
+        return $this->belongsTo(Reaction::class);
+    }
 }

@@ -2,16 +2,14 @@
 
 
 
-@section('content')
-
 @include('layouts.header')
 
 
+@section('content')
 
-<div id="app">
+
+
 @include('layouts.comment')
-@include('layouts.comment')
 
 
-</div>
 @endsection

@@ -40,8 +40,17 @@ Route::get('/chat', [PostController::class, 'chat'])->name('chat');
 
 
 
-//自分の投稿の詳細画面
+//投稿の詳細画面
 Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
+
+
+//投稿への応募を情報を渡す
+Route::post('/show-store', [PostController::class, 'show-store'])->name('show-store');
+
+
+
+//応募完了画面
+Route::post('/show-finish', [PostController::class, 'show-finish'])->name('show-finish');
 
 //投稿の編集
 Route::post('/update', [PostController::class, 'update'])->name('update');

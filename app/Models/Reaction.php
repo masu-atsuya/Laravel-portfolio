@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Condition extends Model
+class Reaction extends Model
 {
     use HasFactory;
 
-    public function posts()
+    public function users()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(User::class);
     }
 }

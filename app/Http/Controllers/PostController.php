@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Game;
 use App\Models\Type;
 use App\Models\Condition;
+use App\Models\Message;
 
 class PostController extends Controller
 {
@@ -97,12 +98,14 @@ class PostController extends Controller
 
         return view('post.matching');
     }
-    public function chat()
+    public function chat($id)
     {
         
-        $messages = Post::with('game','type','condition')
-        ->where('user_id', '=', \Auth::id())
-        ->get();
+        // $messages = Message::where('user_id', '=', \Auth::id())
+        // ->get();
+        $messages = Message::all();
+        
+        // $post_edit = 
 
         return view('post.chat',compact('messages'));
     }

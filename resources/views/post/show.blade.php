@@ -13,41 +13,43 @@
     </div>
 </div><!-- /.profile-head -->
 
-
-<h4 class="text-center user-name">{{$post->user->name}}</h4>
-<div class="col-md-8 mx-auto my-5">
-    <div class="card">
-        <div class="card  px-3 py-2">
-            <p class="card-ttl m-0 mb-2">タイトル</p>
-            <p class="card-text">{{$post->title}}</p>
-        </div>
-        <div class="border-top card px-3 py-2">
-            <p class="card-ttl m-0 mb-2">ゲーム名</p>
-            <p class="card-text">{{$post->game->name}}</p>
-        </div>
-        <div class="border-top card  px-3 py-2">
-            <p class="card-ttl m-0 mb-2">募集タイプ</p>
-            <p class="card-text">{{$post->type->name}}</p>
-        </div>
-        <div class="border-top card  px-3 py-2">
-            <p class="card-ttl m-0 mb-2">概要</p>
-            <p class="card-text">{{$post->content}}</p>
-        </div>
-        <div class="border-top card  px-3 py-2">
-            <p class="card-ttl m-0 mb-2">連絡手段</p>
-            <p class="card-text">{{$post->contact}}</p>
-        </div>
-        <div class="border-top card  px-3 py-2">
-            <p class="card-ttl m-0 mb-2">応募条件</p>
-            <p class="card-text">{{$post->condition->name}}</p>
-        </div>
-        <div class="border-top card  px-3 py-2">
-            <div class="col-md-8 text-center my-3 mx-auto">
-                <a href="/register"><button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
-                        応募する
-                    </button></a>
+<form class="card-body" action="{{route('chat')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <h4 class="text-center user-name">{{$post->user->name}}</h4>
+    <div class="col-md-8 mx-auto my-5">
+        <div class="card">
+            <div class="card  px-3 py-2">
+                <p class="card-ttl m-0 mb-2">タイトル</p>
+                <p class="card-text">{{$post->title}}</p>
+            </div>
+            <div class="border-top card px-3 py-2">
+                <p class="card-ttl m-0 mb-2">ゲーム名</p>
+                <p class="card-text">{{$post->game->name}}</p>
+            </div>
+            <div class="border-top card  px-3 py-2">
+                <p class="card-ttl m-0 mb-2">募集タイプ</p>
+                <p class="card-text">{{$post->type->name}}</p>
+            </div>
+            <div class="border-top card  px-3 py-2">
+                <p class="card-ttl m-0 mb-2">概要</p>
+                <p class="card-text">{{$post->content}}</p>
+            </div>
+            <div class="border-top card  px-3 py-2">
+                <p class="card-ttl m-0 mb-2">連絡手段</p>
+                <p class="card-text">{{$post->contact}}</p>
+            </div>
+            <div class="border-top card  px-3 py-2">
+                <p class="card-ttl m-0 mb-2">応募条件</p>
+                <p class="card-text">{{$post->condition->name}}</p>
+            </div>
+            <div class="border-top card  px-3 py-2">
+                <div class="col-md-8 text-center my-3 mx-auto">
+                <button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
+                    応募
+                </button>
+                </div>
             </div>
         </div>
-    </div>
-</div><!-- /.col-md-8 -->
+    </div><!-- /.col-md-8 -->
+</form>
 @endsection
