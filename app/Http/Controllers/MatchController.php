@@ -11,7 +11,7 @@ class MatchController extends Controller
     {
         Reaction::create([
             'from_user_id' => \Auth::id(),
-            'to_user_id' => $request->input('to_user_id'),
+            'to_post_id' => $request->input('to_post_id'),
             'status' => $request->input('status')
         ]);
 

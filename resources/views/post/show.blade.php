@@ -15,7 +15,7 @@
 
 <form class="card-body" action="{{route('entry')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="to_user_id" value="{{$post->user->id}}">
+    <input type="hidden" name="to_post_id" value="{{$post->id}}">
     <input type="hidden" name="status" value="1">
     <h4 class="text-center user-name">{{$post->user->name}}</h4>
     <div class="col-md-8 mx-auto my-5">

@@ -19,7 +19,7 @@
 
                                 <div class="w-50">
                                     <div class="pl-3">
-                                        <p class="card-title">{{$post['content']}}</p>
+                                        <p class="card-title">{{$post->title}}</p>
                                         <p class="card-title">name:{{$post->user->name}}</p>
                                         <p class="card-title">game:{{$post->game->name}}</p>
                                         <p class="card-title">:{{$post->type->name}}</p>

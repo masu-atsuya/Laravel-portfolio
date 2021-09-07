@@ -29,14 +29,14 @@ class PostController extends Controller
     public function home()
     {
 
-        $posts = Post::with('game','type','condition')
+        $posts = Post::with('game', 'type', 'condition')
             ->where('user_id', '!=', \Auth::id())
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-dd($posts);
         
+
 
 
         return view('post.home', compact('posts'));
@@ -104,13 +104,13 @@ dd($posts);
 
     public function chat($id)
     {
-        
-      
-        $messages = Message::all();
-        
-   
 
-        return view('post.chat',compact('messages'));
+
+        $messages = Message::all();
+
+
+
+        return view('post.chat', compact('messages'));
     }
 
     public function update(Request $request)
