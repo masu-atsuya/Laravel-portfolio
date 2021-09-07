@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('game_id');
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('condition_id');
+            $table->unsignedBigInteger('reaction_id');
             $table->softDeletes();
             $table->string('title',100);
             $table->longText('content');
@@ -30,6 +31,7 @@ class CreatePostsTable extends Migration
             $table->foreign('game_id')->references('id')->on('games');
             $table->foreign('type_id')->references('id')->on('types');
             $table->foreign('condition_id')->references('id')->on('conditions');
+            $table->foreign('reaction_id')->references('id')->on('reactions');
         });
     }
 

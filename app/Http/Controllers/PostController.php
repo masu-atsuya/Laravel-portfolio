@@ -10,6 +10,8 @@ use App\Models\Game;
 use App\Models\Type;
 use App\Models\Condition;
 use App\Models\Message;
+use App\Models\User;
+use App\Models\Reaction;
 
 class PostController extends Controller
 {
@@ -28,12 +30,12 @@ class PostController extends Controller
     {
 
         $posts = Post::with('game','type','condition')
-            ->where('user_id', '=', \Auth::id())
+            ->where('user_id', '!=', \Auth::id())
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-
+dd($posts);
         
 
 
@@ -89,23 +91,24 @@ class PostController extends Controller
             \Session::flash('err_msg', '投稿データがありません。');
             return redirect(route('home'));
         }
-
         return view('post.show', compact('post'));
     }
+
+
 
     public function matching()
     {
 
         return view('post.matching');
     }
+
     public function chat($id)
     {
         
-        // $messages = Message::where('user_id', '=', \Auth::id())
-        // ->get();
+      
         $messages = Message::all();
         
-        // $post_edit = 
+   
 
         return view('post.chat',compact('messages'));
     }

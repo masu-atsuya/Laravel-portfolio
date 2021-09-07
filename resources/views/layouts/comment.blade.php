@@ -1,8 +1,10 @@
 <div class="card">
-    <div class="card-body">
-    
-    </div>
+  <div class="card-body">
+
   </div>
+</div>
+@if(!empty($messages)) {
+
 @foreach($messages as $message)
 <div class="container">
   <div class="card rounded-3 bg-info">
@@ -13,3 +15,6 @@
   <p class="">{{$message->created_at}}</p>
 </div><!-- /.container -->
 @endforeach
+}
+
+@endif

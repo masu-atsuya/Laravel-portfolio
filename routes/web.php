@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\MatchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::get('/create', [PostController::class, 'create'])->name('create');
 Route::post('/store', [PostController::class, 'store'])->name('store');
 
 //マッチング画面
-Route::get('/matching', [PostController::class, 'matching'])->name('matching');
+Route::get('/match', [MatchController::class, 'index'])->name('match-index');
 
 //マッチング画面
 Route::get('/chat', [PostController::class, 'chat'])->name('chat');
@@ -45,12 +46,12 @@ Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
 
 
 //投稿への応募を情報を渡す
-Route::post('/show-store', [PostController::class, 'show-store'])->name('show-store');
+Route::post('/entry', [MatchController::class, 'store'])->name('entry');
 
 
 
 //応募完了画面
-Route::post('/show-finish', [PostController::class, 'show-finish'])->name('show-finish');
+// Route::get('/show-finish', [PostController::class, 'show_finish'])->name('show-finish');
 
 //投稿の編集
 Route::post('/update', [PostController::class, 'update'])->name('update');

@@ -102,7 +102,7 @@
             <a class="nav-link" href="/create">投稿作成</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/matching">応募状況</a>
+            <a class="nav-link" href="/match">応募状況</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/chat">チャット</a>
