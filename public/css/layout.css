@@ -15,16 +15,16 @@ select:invalid,
 
 .profile-img  {
   object-fit:cover;
-  height: 130px;
+  height: 200px;
   width: 100%;
 }
 
 .thumbnail-wrap {
-  top: 45%;
+  top: 55%;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .user-name {
-  margin-top: 120px;
+  /* margin-top: 50px; */
 }

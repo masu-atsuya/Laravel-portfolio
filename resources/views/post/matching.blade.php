@@ -9,7 +9,6 @@
 
 
 
-@include('layouts.comment')
 
 
 @endsection

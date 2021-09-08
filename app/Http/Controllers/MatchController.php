@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reaction;
+use App\Models\Post;
 
 class MatchController extends Controller
 {
     public function store(Request $request)
     {
+
+      
+
         Reaction::create([
-            'from_user_id' => \Auth::id(),
-            'to_post_id' => $request->input('to_post_id'),
+            'user_id' => \Auth::id(),
+            'post_id' => $request->input('post_id'),
             'status' => $request->input('status')
         ]);
 
@@ -22,18 +26,13 @@ class MatchController extends Controller
     public function index()
     {
 
-        $reactions = Reaction::with('user')
-        // ->where(
-        //     'from_user_id', '=', \Auth::id(),
-        //     'status','=','TRUE' 
-        //     )
+        $reactions = Reaction::with('post','user')
+ 
         ->get();
 
-        // $reactions = Reaction::get();
-
-
-
         dd($reactions);
+
+
 
         return view('match.index', compact('reactions'));
     }

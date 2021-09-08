@@ -36,7 +36,7 @@ class PostController extends Controller
             ->get();
 
         
-
+        
 
 
         return view('post.home', compact('posts'));

@@ -15,11 +15,11 @@ class CreateReactionsTable extends Migration
     {
         Schema::create('reactions', function (Blueprint $table) {
             $table->unsignedBigInteger('id',true);
-            $table->unsignedBigInteger('from_user_id');
-            $table->unsignedBigInteger('to_post_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('post_id');
             $table->boolean('status');
-            $table->foreign('from_user_id')->references('id')->on('users');
-            $table->foreign('to_post_id')->references('id')->on('posts');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });

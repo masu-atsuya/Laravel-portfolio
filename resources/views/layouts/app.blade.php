@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/css/layout.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
 
 <body class="pb-5">
@@ -108,7 +109,7 @@
             <a class="nav-link" href="/chat">チャット</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/my">マイ</a>
+            <a class="nav-link" href="/profile">マイ</a>
         </li>
     </ul>
 </body>

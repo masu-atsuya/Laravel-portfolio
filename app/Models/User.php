@@ -54,5 +54,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reaction::class);
     }
+
+ 
 }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +49,9 @@ Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
 //投稿への応募を情報を渡す
 Route::post('/entry', [MatchController::class, 'store'])->name('entry');
 
+//プロフィール画面
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
-
-//応募完了画面
-// Route::get('/show-finish', [PostController::class, 'show_finish'])->name('show-finish');
 
 //投稿の編集
 Route::post('/update', [PostController::class, 'update'])->name('update');
