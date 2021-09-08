@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->hasMany(Reaction::class);
     }
 
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
  
 }
 

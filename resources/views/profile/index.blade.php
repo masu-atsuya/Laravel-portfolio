@@ -8,7 +8,7 @@
 
 
 
-<form class="" action="{{route('entry')}}" method="POST" enctype="multipart/form-data">
+<div class="card-body">
 
     <div class="">
         <div class=" my-5 bg-white rounded-circle img-thumbnail mx-auto d-block d-flex justify-content-center align-items-center">
@@ -19,22 +19,32 @@
 
     @csrf
     <div class="col-md-8 mx-auto my-5">
-        <h4 class="text-center user-name">{{$user->name}}</h4>
+        <h4 class="text-center py-3">{{$profile->user->name}}</h4>
+        <div class="card">
+            <div class="card  px-3 py-2">
+                <p class="card-ttl m-0 mb-2">ゲームタイトル</p>
+                <p class="card-text">{{$profile->game}}</p>
+            </div>
 
-        <div class="form-group">
-            <label for="title">好きなゲーム</label>
-            <input type="text" class="form-control" name="title" id="title" placeholder="例：一緒にゲームしてくれる方募集！">
-        </div>
+            <div class="card  px-3 py-2">
+                <p class="card-ttl m-0 mb-2">自己紹介</p>
+                <p class="card-text">{{$profile->content}}</p>
+            </div>
 
-        <div for="content" class="form-group">
-            <label for="content">自己紹介</label>
-            <textarea class="form-control" name="content" id="content" cols="10" rows="8" aria-describedby="emailHelp" placeholder="例：一緒に楽しく遊びましょう！"></textarea>
+
         </div>
         <div class="col-md-8 text-center my-3 mx-auto">
-            <button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
-                マイページ決定
-            </button>
+            <a href="/index/edit"><button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
+                    自分の投稿一覧
+                </button></a>
+        </div>
+
+        <div class="col-md-8 text-center my-3 mx-auto">
+            <a href="/profile/edit"><button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
+                    編集
+                </button></a>
         </div>
     </div>
-</form>
+
+</div>
 @endsection

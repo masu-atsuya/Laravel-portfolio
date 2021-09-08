@@ -52,6 +52,11 @@ Route::post('/entry', [MatchController::class, 'store'])->name('entry');
 //プロフィール画面
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
+//プロフィール編集画面
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile-edit');
+//プロフィール編集を渡す
+Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile-store');
+
 
 //投稿の編集
 Route::post('/update', [PostController::class, 'update'])->name('update');
