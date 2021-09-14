@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMessageRoomsTable extends Migration
+class CreateUserRoomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMessageRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('message_rooms', function (Blueprint $table) {
+        Schema::create('user_rooms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateMessageRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message_rooms');
+        Schema::dropIfExists('user_rooms');
     }
 }
