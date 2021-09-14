@@ -16,8 +16,8 @@
     <h1>アイコン</h1>
     <h2>アプリ名</h2>
 
-    <div class=" fixed-bottom">
-      <div class="col-md-6 text-center mb-5">
+    <div class=" fixed-bottom d-flex flex-column align-items-center">
+      <div class="col-md-6 text-center">
         <a href="/register"><button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
             新規会員登録
           </button></a>

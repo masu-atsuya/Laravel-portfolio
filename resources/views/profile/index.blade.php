@@ -34,7 +34,7 @@
 
         </div>
         <div class="col-md-8 text-center my-3 mx-auto">
-            <a href="/index/edit"><button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
+            <a href="/profile/post"><button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
                     自分の投稿一覧
                 </button></a>
         </div>

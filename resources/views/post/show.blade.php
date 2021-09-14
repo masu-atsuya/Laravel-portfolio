@@ -15,10 +15,11 @@
 
 <form class="card-body" action="{{route('entry')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="post_id" value="{{$post->id}}">
+    <input type="hidden" name="to_user_id" value="{{$post->user->id}}">
     <input type="hidden" name="status" value="1">
-    <h4 class="text-center user-name">{{$post->user->name}}</h4>
+    <input type="hidden" name="post_id" value="{{$post->id}}">
     <div class="col-md-8 mx-auto my-5">
+        <h4 class="text-center py-5">{{$post->user->name}}</h4>
         <div class="card">
             <div class="card  px-3 py-2">
                 <p class="card-ttl m-0 mb-2">タイトル</p>

@@ -71,14 +71,20 @@
                                     {{ __('ログアウト') }}
                                 </a>
 
+                                <a href="/home" class="dropdown-item">
+                                    投稿一覧
+                                </a>
                                 <a href="/create" class="dropdown-item">
                                     投稿作成
                                 </a>
-                                <a href="/list" class="dropdown-item">
-                                    投稿編集
+                                <a href="/match" class="dropdown-item">
+                                    応募状況
                                 </a>
-                                <a href="/create" class="dropdown-item">
-                                    チャット
+                                <a href="/chat" class="dropdown-item">
+                                    chat
+                                </a>
+                                <a href="/profile" class="dropdown-item">
+                                    マイ
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -91,6 +97,7 @@
                 </div>
             </div>
         </nav>
+
         <main class="">
             @yield('content')
         </main>
@@ -112,6 +119,7 @@
             <a class="nav-link" href="/profile">マイ</a>
         </li>
     </ul>
+
 </body>
 
 </html>

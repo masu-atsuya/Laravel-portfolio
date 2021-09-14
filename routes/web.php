@@ -37,6 +37,10 @@ Route::post('/store', [PostController::class, 'store'])->name('store');
 //マッチング画面
 Route::get('/match', [MatchController::class, 'index'])->name('match-index');
 
+
+//ajax確認用
+Route::get('/match/ajax', [MatchController::class, 'json_data'])->name('json_data');
+
 //マッチング画面
 Route::get('/chat', [PostController::class, 'chat'])->name('chat');
 
@@ -57,6 +61,8 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile-e
 //プロフィール編集を渡す
 Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile-store');
 
+//自分の投稿一覧
+Route::get('/profile/post', [ProfileController::class, 'post'])->name('profile-post');
 
 //投稿の編集
 Route::post('/update', [PostController::class, 'update'])->name('update');

@@ -104,12 +104,7 @@ class PostController extends Controller
 
     public function chat($id)
     {
-
-
         $messages = Message::all();
-
-
-
         return view('post.chat', compact('messages'));
     }
 

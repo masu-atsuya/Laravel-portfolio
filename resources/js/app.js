@@ -8,12 +8,15 @@ require('./bootstrap');
 
 import { createApp } from 'vue'
 import ExampleComponent from './components/ExampleComponent.vue'
-import ChatComponent from './components/ChatComponent.vue'
+import MatchTab from './components/MatchTab.vue'
+import ChatAjax from './components/ChatAjax.vue'
+import { error } from 'jquery';
 
 createApp({
     components:{
         ExampleComponent,
-        ChatComponent
+        MatchTab,
+        ChatAjax
     }
 }).mount('#app')
 
@@ -32,7 +35,8 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('chat-component', require('./components/ChatComponent.vue').default);
+Vue.component('match-tab', require('./components/MatchTab.vue').default);
+Vue.component('chat-ajax', require('./components/ChatAjax.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -42,4 +46,5 @@ Vue.component('chat-component', require('./components/ChatComponent.vue').defaul
 
 const app = new Vue({
     el: '#app',
+ 
 });

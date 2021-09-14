@@ -6,38 +6,41 @@ use Illuminate\Http\Request;
 use App\Models\Reaction;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Post;
 
 class ProfileController extends Controller
 {
     public function index()
     {
-        $profileCheck = Profile::where('user_id','=',\Auth::id())
-        ->exists();
+        $profileCheck = Profile::where('user_id', '=', \Auth::id())
+            ->exists();
 
         // dd($profileCheck);
 
 
-        if($profileCheck) {
+        if ($profileCheck) {
 
             $profile = Profile::with('user')
-            ->where('user_id','=',\Auth::id())
-            ->first();
+                ->where('user_id', '=', \Auth::id())
+                ->first();
 
 
 
-            return view('profile.index',compact('profile'));
-        }else {
-            return redirect(route('profile-edit')); 
+            return view('profile.index', compact('profile'));
+        } else {
+            return redirect(route('profile-edit'));
         }
     }
 
-    public function edit() {
+    public function edit()
+    {
 
         $user = User::find(\Auth::id());
-        return view('profile.edit',compact('user'));
+        return view('profile.edit', compact('user'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $profile = $request->all();
 
@@ -50,12 +53,19 @@ class ProfileController extends Controller
 
         ]);
 
-        return redirect(route('profile')); 
-
+        return redirect(route('profile'));
     }
 
+    public function post()
+    {
+        $posts = Post::with('game', 'type', 'condition')
+            ->where('user_id', '=', \Auth::id())
+            ->whereNull('deleted_at')
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+
+        return view('profile.post', compact('posts'));
 
 
-
-    
+    }
 }
