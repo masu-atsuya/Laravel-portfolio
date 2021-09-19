@@ -7,7 +7,7 @@
 @include('layouts.header')
 
 
-<form class="" action="{{route('profile-update')}}" method="POST" enctype="multipart/form-data">
+<form class="" action="{{route('profile-store')}}" method="POST" enctype="multipart/form-data">
 
     <div class="">
         <div class=" my-5 bg-white rounded-circle img-thumbnail mx-auto d-block d-flex justify-content-center align-items-center">
@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-8 text-center my-3 mx-auto">
             <button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
-                編集完了
+                マイページ決定
             </button>
         </div>
     </div>

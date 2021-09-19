@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class message extends Model
+class UserRoom extends Model
 {
     use HasFactory;
 
-  
+    protected $fillable = [
+        'user_id',
+    ];
 
     public function user()
     {
@@ -19,6 +21,4 @@ class message extends Model
     {
         return $this->belongsTo(Room::class);
     }
-
-
 }

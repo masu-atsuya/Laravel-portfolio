@@ -33,11 +33,12 @@ export default {
 
       const url = "/match/ajax"; // ここでもLaravelと連携
       axios.get(url).then((response) => {
-        this.string = response.data.string;
-        this.number = response.data.number;
-        this.boolean = response.data.boolean;
-        this.array = response.data.array;
-        this.object = response.data.object;
+        // this.string = response.data.string;
+        // this.number = response.data.number;
+        // this.boolean = response.data.boolean;
+        // this.array = response.data.array;
+        // this.object = response.data.object;
+        console.log(response.data);
       });
     },
   },

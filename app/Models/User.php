@@ -64,9 +64,9 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function rooms()
+    public function user_room()
     {
-        return $this->belongsToMany(Room::class);
+        return $this->hasMany(UserRoom::class);
     }
 
  

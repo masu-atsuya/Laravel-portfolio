@@ -81,7 +81,7 @@
                                     応募状況
                                 </a>
                                 <a href="/chat" class="dropdown-item">
-                                    chat
+                                    チャット
                                 </a>
                                 <a href="/profile" class="dropdown-item">
                                     マイ

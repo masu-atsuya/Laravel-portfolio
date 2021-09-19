@@ -2,20 +2,18 @@
 
 @section('content')
 
-
 @include('layouts.header')
 <match-tab></match-tab>
-<chat-ajax></chat-ajax>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
 
-            
-            <div class="card-body">
 
+            <div class="card-body">
+                これは承認待ちの部分
                 @if(!empty($reactions))
                 @foreach($reactions as $reaction)
-                <a href="/show/{{$reaction->post->id}}">
+                <a href="/match/show/{{$reaction->post->id}}">
                     <div class="card mb-3 mx-auto" style="max-width: 1000px;">
                         <div class="row no-gutters">
 
@@ -48,9 +46,11 @@
                 </div>
                 @endif
             </div>
-            
 
-            
+
+            <div class="card-body">
+
+            </div>
 
         </div>
     </div>

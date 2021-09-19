@@ -1,16 +1,26 @@
 select:invalid,
 .card-ttl,
-.form-control::placeholder
+.form-control::placeholder,
+.text-message
 {
   color: #c4c4c4;
 }
 
+.fs-1 {
+  font-size: 20px;
+}
 
 
 .img-thumbnail { 
   object-fit:cover;
   width: 160px;
   height: 160px;
+ }
+
+ .img-icon {
+  object-fit:cover;
+   width: 100px;
+   height: 100px;
  }
 
 .profile-img  {
@@ -25,7 +35,4 @@ select:invalid,
   transform: translateX(-50%);
 }
 
-.user-name {
-  /* margin-top: 50px; */
-}
 

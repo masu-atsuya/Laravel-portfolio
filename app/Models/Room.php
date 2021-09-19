@@ -9,8 +9,12 @@ class Room extends Model
 {
     use HasFactory;
 
-    public function users()
+    public function user_room()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(UserRoom::class);
+    }
+    public function message()
+    {
+        return $this->hasOne(Message::class)->latest();
     }
 }

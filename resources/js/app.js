@@ -9,14 +9,18 @@ require('./bootstrap');
 import { createApp } from 'vue'
 import ExampleComponent from './components/ExampleComponent.vue'
 import MatchTab from './components/MatchTab.vue'
-import ChatAjax from './components/ChatAjax.vue'
+import RealtimeMessage from './components/RealtimeMessage.vue'
+import ImagePreview from './components/ImagePreview.vue'
+
 import { error } from 'jquery';
+
 
 createApp({
     components:{
         ExampleComponent,
         MatchTab,
-        ChatAjax
+        RealtimeMessage,
+        ImagePreview
     }
 }).mount('#app')
 
@@ -34,9 +38,9 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
 Vue.component('match-tab', require('./components/MatchTab.vue').default);
-Vue.component('chat-ajax', require('./components/ChatAjax.vue').default);
+Vue.component('realtime-message', require('./components/RealtimeMessage.vue').default);
+Vue.component('image-preview', require('./components/ImagePreview.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

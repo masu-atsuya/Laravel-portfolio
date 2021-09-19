@@ -59,8 +59,6 @@ class PostController extends Controller
     {
         $posts = $request->all();
         $image = $request->file('image');
-        // dd($image);
-        // 画像がアップロードされていれば、storageに保存
         if ($request->hasFile('image')) {
             $path = \Storage::put('/public', $image);
             $path = explode('/', $path);

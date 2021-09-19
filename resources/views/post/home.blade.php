@@ -15,8 +15,12 @@
                         <div class="card mb-3 mx-auto" style="max-width: 1000px;">
                             <div class="row no-gutters">
 
+                                @if(!empty($post['image']))
                                 <img src="{{ '/storage/' . $post['image']}}" class="w-50 img-fluid" />
-
+                                @else
+                                <img src="storage/gamer.jpg" class="w-50">
+                                @endif
+                                
                                 <div class="w-50">
                                     <div class="pl-3">
                                         <p class="card-title">{{$post->title}}</p>

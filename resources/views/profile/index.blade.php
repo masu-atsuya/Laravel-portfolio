@@ -10,12 +10,12 @@
 
 <div class="card-body">
 
-    <div class="">
-        <div class=" my-5 bg-white rounded-circle img-thumbnail mx-auto d-block d-flex justify-content-center align-items-center">
-            <label class="" for="image"><i class="fa fa-camera fa-3x" aria-hidden="true"></i></label>
-            <input type="file" class="form-control-file d-none" name='image' id="image">
-        </div>
-    </div>
+    @if
+    <img src="{{ '/storage/' . $profile['image']}}" class="my-5  rounded-circle img-thumbnail mx-auto d-block d-flex justify-content-center align-items-center" />
+    @else
+    <img src="storage/gamer.jpg" class="w-50">
+
+    @endif
 
     @csrf
     <div class="col-md-8 mx-auto my-5">
