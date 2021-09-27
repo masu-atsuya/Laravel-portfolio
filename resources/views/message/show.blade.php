@@ -4,14 +4,14 @@
 
 
 
-<div class=" container">
-    <div class=" border-bottom">
-        <h2>名前</h2>
-        <img src="" alt="">
-    </div>
-    <realtime-message :messages="{{$messages}}"></realtime-message>
-
+<div class=" fixed-top bg-white">
+    <h2>名前</h2>
+    <img src="" alt="">
 </div>
+<div class=" container chat " ref="displayEnd">
+    <realtime-message :room="{{$room->id}}" :my-id="{{$user->id}}"></realtime-message>
+</div>
+
 
 
 @endsection

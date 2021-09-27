@@ -1,45 +1,80 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      チャット
-      <div class="col-md-8">
-        <div v-for="message in messages" :key="message.id" class="card-body mb-3 w-75 ml-auto border bg-info">
-          {{ message.comment }}
-          </div>
-        <div class="card">
-          <form @submit.prevent="messageCreate">
-            <input type="hidden" value="" />
-            メッセージ作成：<input v-model="newMessage.comment" type="text" />
-            <button>送信</button>
-          </form>
+<div id='vue-content'>
+    <div ref="displayEnd">
+        <div v-for="message in messages" :key="message.id">
+            <div class=" card-body mb-2  border bg-success text-white d-table mr-auto rounded mw-75 ml-3" v-if="message.user_id !== this.myId">
+                {{ message.comment }}
+            </div>
+            <div class=" card-body mb-2  border bg-info text-white d-table ml-auto rounded mw-75 mr-3" v-if="message.user_id === this.myId">
+                {{ message.comment }}
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+        <form @submit.prevent="messageCreate" class=" fixed-bottom input-chat">
+            <input v-model="newMessage.comment" type="text" class=" w-75">
+            <button class="w-25">送信</button>
+        </form>
+</div>
+</div>
 </template>
 
 <script>
-export default {
-  props: [
-   "messages"
-  ],
-  data() {
-    return {
-      newMessage: [],
-    };
-  },
-  methods: {
-  
+    export default {
+      updated() {
+    this.scrollToEnd()
+},
+        props: ["room", "myId"],
+        data() {
+            return {
+                messages: {
+                    comment: "",
+                },
+                newMessage: {
+                    comment: "",
+                    user: this.myId,
+                    room: this.room,
+                },
+            };
+        },
 
-    messageCreate() {
-      if (this.newMessage.comment != "") {
-        axios.post("/message/create/api", this.newMessage).then((response) => {
-          this.newMessage.comment = "";
-        });
-      }
-    },
-  },
-  mounted() {
-  },
-};
+        methods: {
+            getMessage() {
+                axios
+                    .get("/message/api/" + this.room)
+                    .then((response) => {
+                        this.messages = response.data.messages;
+                        console.log(vue-content.scrollTop);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+
+            messageCreate() {
+                if (this.newMessage.comment != "") {
+                    axios.post("/message/create/api", this.newMessage).then((response) => {
+                        this.newMessage.comment = "";
+                        this.getMessage();
+                    });
+                }
+            },
+           scrollToEnd() {
+          this.$nextTick(() => {
+              const displayEnd = this.$refs.displayEnd
+              if (!displayEnd) return
+              displayEnd.scrollTop = displayEnd.scrollHeight
+           })
+        },
+
+      scrollTop(){
+      window.scrollTo({
+        bottom: 0,
+      });
+    }
+        },
+        mounted() {
+            this.getMessage();
+            this.scrollToEnd();
+            this.scrollTop();
+        },
+    };
 </script>

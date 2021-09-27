@@ -17,7 +17,10 @@ class MessageController extends Controller
         $rooms = UserRoom::select()
             ->where('user_id', '=', \Auth::id())
             ->get();
-
+        if (!empty($rooms)) {
+            \Session::flash('err_msg', 'マッチングした投稿がありません');
+            return redirect(route('match-index'));
+        }
         foreach ($rooms as $room) {
 
             $user = UserRoom::with(['user' => function ($query) {
@@ -36,25 +39,36 @@ class MessageController extends Controller
 
         return view('message.index', compact('users'));
     }
-    public function json_data()
+    public function json_data($id)
     {
-        $messages = Message::all();
+        // $messages = Message::all();
+        $messages = Message::where('room_id', '=', $id)
+            ->get();
         return [
             'messages' => $messages
         ];
     }
     public function json_create(Request $request)
+
     {
         Message::insert([
-            'comment' => $request->comment,
+            'comment' => $request->input('comment'),
+            'room_id' => $request->room,
+            'user_id' => $request->user,
+
         ]);
     }
     public function show($id)
     {
-        $messages = Message::where('room_id','=',$id)
-        ->get();
 
-        // dd($messages);
-        return view('message.show', compact('messages'));
+        $room = Room::select('id')
+            ->where('id', '=', $id)
+            ->first();
+
+        $user = User::select('id')
+            ->where('id', '=', \Auth::id())
+            ->first();
+
+        return view('message.show', compact('room', 'user'));
     }
 }

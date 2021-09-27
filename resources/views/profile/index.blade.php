@@ -10,7 +10,7 @@
 
 <div class="card-body">
 
-    @if
+    @if(!empty($profile['image']))
     <img src="{{ '/storage/' . $profile['image']}}" class="my-5  rounded-circle img-thumbnail mx-auto d-block d-flex justify-content-center align-items-center" />
     @else
     <img src="storage/gamer.jpg" class="w-50">

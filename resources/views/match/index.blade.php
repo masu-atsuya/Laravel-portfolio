@@ -3,12 +3,16 @@
 @section('content')
 
 @include('layouts.header')
+@if (session('err_msg'))
+<h4 class="err_msg my-3 text-center mx-3">
+    {{ session('err_msg') }}
+</h4>
+@endif
 <match-tab></match-tab>
 <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-12">
-
-
             <div class="card-body">
                 これは承認待ちの部分
                 @if(!empty($reactions))

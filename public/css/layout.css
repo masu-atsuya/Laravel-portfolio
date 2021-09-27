@@ -5,28 +5,59 @@ select:invalid,
 {
   color: #c4c4c4;
 }
-
+.input-chat {
+  margin-bottom: 41px;
+}
+.chat{
+  margin-bottom: 41px;
+  margin-top: 70px;
+}
+.mw-75 {
+  max-width: 75%;
+}
 .fs-1 {
   font-size: 20px;
 }
 
-
+.fs-5 {
+  font-size: 12px;
+}
 .img-thumbnail { 
   object-fit:cover;
-  width: 160px;
-  height: 160px;
- }
+  width: 140px;
+  height: 140px;
+}
 
- .img-icon {
-  object-fit:cover;
-   width: 100px;
-   height: 100px;
- }
+@media screen and (max-width: 767px) {
+  .img-thumbnail { 
+    object-fit:cover;
+    width: 80px;
+    height: 80px;
+  }
+  
 
-.profile-img  {
+  .card-text {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .card-title {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width:350px){
+  .img-thumbnail { 
+    object-fit:cover;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+.profile-img { 
   object-fit:cover;
-  height: 200px;
-  width: 100%;
+  width: 140px;
+  height: 140px;
 }
 
 .thumbnail-wrap {
@@ -34,5 +65,7 @@ select:invalid,
   left: 50%;
   transform: translateX(-50%);
 }
+
+
 
 

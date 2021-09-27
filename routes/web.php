@@ -34,8 +34,8 @@ Route::get('/create', [PostController::class, 'create'])->name('create');
 
 //投稿画面の情報を渡す
 Route::post('/store', [PostController::class, 'store'])->name('store');
-//マッチング画面
-Route::get('/chat', [PostController::class, 'chat'])->name('chat');
+//チャットページでマッチングしたユーザー一覧表示
+Route::get('/message', [MessageController::class, 'index'])->name('message-index');
 //投稿の詳細画面
 Route::get('/show/{id}', [PostController::class, 'show'])->name('show');
 
@@ -55,11 +55,10 @@ Route::get('/match/show/{id}', [MatchController::class, 'show'])->name('match-sh
 Route::post('/match/approval', [MatchController::class, 'approval'])->name('approval');
 
 //ajaxでユーザー一覧取得
-Route::get('/message/api', [MessageController::class, 'json_data'])->name('json_data');
+Route::get('/message/api/{id}', [MessageController::class, 'json_data'])->name('json_data');
 //ajax確認
 Route::post('/message/create/api', [MessageController::class, 'json_create'])->name('json_create');
-//チャットページでマッチングしたユーザー一覧表示
-Route::get('/message', [MessageController::class, 'index'])->name('message-index');
+
 //チャットページでマッチングしたユーザー一覧表示
 Route::get('/message/show/{id}', [MessageController::class, 'show'])->name('message-show');
 //投稿への応募を情報を渡す

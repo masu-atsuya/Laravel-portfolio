@@ -58,13 +58,8 @@
 
 
 
-            <div class="form-group">
-                <label for="image">画像登録</label>
-                <!-- <input type="file" class="form-control-file" name='image' id="image"> -->
-                <image-preview id="image" name="image"></image-preview>
-            </div>
-     
-            <div class="col-md-6 text-center my-5">
+
+            <div class="col-6 text-center my-5 mx-auto">
                 <button type="submit" class="btn-lg btn col-8 py-3 btn-primary">
                     投稿
                 </button>

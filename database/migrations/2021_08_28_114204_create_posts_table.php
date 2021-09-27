@@ -23,7 +23,6 @@ class CreatePostsTable extends Migration
             $table->string('title',100);
             $table->longText('content');
             $table->string('contact',100);
-            $table->string('image',255);
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign('user_id')->references('id')->on('users');

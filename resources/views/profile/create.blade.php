@@ -9,17 +9,15 @@
 
 <form class="" action="{{route('profile-store')}}" method="POST" enctype="multipart/form-data">
 
-    <div class="">
-        <div class=" my-5 bg-white rounded-circle img-thumbnail mx-auto d-block d-flex justify-content-center align-items-center">
-            <label class="" for="image"><i class="fa fa-camera fa-3x" aria-hidden="true"></i></label>
-            <input type="file" class="form-control-file d-none" name='image' id="image">
-        </div>
-    </div>
 
     @csrf
     <div class="col-md-8 mx-auto my-5">
         <h4 class="text-center user-name">{{$user->name}}</h4>
 
+        <div class="form-group">
+            <label class="" for="image">プロフィール画像</label>
+            <input type="file" class="form-control-file " name='image' id="image">
+        </div>
         <div class="form-group">
             <label for="title">好きなゲーム</label>
             <input type="text" class="form-control" name="game" id="game" placeholder="ゲームタイトル">

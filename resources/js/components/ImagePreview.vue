@@ -1,9 +1,9 @@
 <template>
-<form action="">
+
   <input type="file" accept="image/*" @change="onFileChange($event)" class="form-control-file" name='image' id="image">
   <img :src="imageData" v-if="imageData" class="w-100"/> 
 
-</form>
+
 </template>
 
 <script>

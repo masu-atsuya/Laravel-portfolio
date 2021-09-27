@@ -80,7 +80,7 @@
                                 <a href="/match" class="dropdown-item">
                                     応募状況
                                 </a>
-                                <a href="/chat" class="dropdown-item">
+                                <a href="/message" class="dropdown-item">
                                     チャット
                                 </a>
                                 <a href="/profile" class="dropdown-item">
@@ -113,7 +113,7 @@
             <a class="nav-link" href="/match">応募状況</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/chat">チャット</a>
+            <a class="nav-link" href="/message">チャット</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/profile">マイ</a>

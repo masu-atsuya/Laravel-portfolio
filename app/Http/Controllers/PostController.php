@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\PostCreateRequest;
 
 use Illuminate\Http\Request;
 
@@ -29,14 +30,17 @@ class PostController extends Controller
     public function home()
     {
 
-        $posts = Post::with('game', 'type', 'condition')
+        $posts = Post::with(['user' => function ($query) {
+            $query->with('profile');
+        }])
+            ->with('game', 'type', 'condition')
             ->where('user_id', '!=', \Auth::id())
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-        
-        
+
+
 
 
         return view('post.home', compact('posts'));
@@ -58,13 +62,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $posts = $request->all();
-        $image = $request->file('image');
-        if ($request->hasFile('image')) {
-            $path = \Storage::put('/public', $image);
-            $path = explode('/', $path);
-        } else {
-            $path = null;
-        }
+
         Post::insert([
             'user_id' => \Auth::id(),
             'title' => $posts['title'],
@@ -73,7 +71,6 @@ class PostController extends Controller
             'content' => $posts['content'],
             'contact' => $posts['contact'],
             'condition_id' => $posts['condition_id'],
-            'image' => $path[1],
 
         ]);
 
@@ -84,7 +81,17 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::with(['user' => function ($query) {
+            $query->with('profile');
+        }])
+            ->with('game', 'type', 'condition')
+            ->where('user_id', '!=', \Auth::id())
+            ->whereNull('deleted_at')
+            ->orderBy('updated_at', 'DESC')
+            ->find($id);
+
+
+
         if (is_null($post)) {
             \Session::flash('err_msg', '投稿データがありません。');
             return redirect(route('home'));

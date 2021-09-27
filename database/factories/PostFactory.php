@@ -30,7 +30,6 @@ class PostFactory extends Factory
             'title' => $this->faker->realText(10),
             'content' => $this->faker->realText(10),
             'contact' => $this->faker->realText(10),
-            'image' => $this->faker->realText(10),
 
           
     
