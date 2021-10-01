@@ -11,7 +11,19 @@
 
 
     @csrf
+
     <div class="col-md-8 mx-auto my-5">
+        <div class="form-group">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+        </div>
         <h4 class="text-center user-name">{{$user->name}}</h4>
 
         <div class="form-group">
@@ -23,9 +35,9 @@
             <input type="text" class="form-control" name="game" id="game" placeholder="ゲームタイトル">
         </div>
 
-        <div for="content" class="form-group">
-            <label for="content">自己紹介</label>
-            <textarea class="form-control" name="content" id="content" cols="10" rows="8" aria-describedby="emailHelp" placeholder="例：一緒に楽しく遊びましょう！"></textarea>
+        <div for="introduction" class="form-group">
+            <label for="introduction">自己紹介</label>
+            <textarea class="form-control" name="introduction" id="introduction" cols="10" rows="8" aria-describedby="emailHelp" placeholder="例：一緒に楽しく遊びましょう！"></textarea>
         </div>
         <div class="col-md-8 text-center my-3 mx-auto">
             <button type="submit" class="btn-lg btn col-8 py-3 btn-primary">

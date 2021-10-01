@@ -5,10 +5,22 @@
 @include('layouts.header')
 <div class="col-md-8 mx-auto">
 
+
     <div>
 
         <form class="card-body" action="{{route('store')}}" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="form-group">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+            </div>
             <div class="form-group">
                 <label for="title">投稿タイトル</label>
                 <input type="text" class="form-control" name="title" id="title" placeholder="例：一緒にゲームしてくれる方募集！">
@@ -41,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label for="text">連絡手段</label>
-                <input type="text" class="form-control" id="contact" name="contact" placeholder="例：初心者ですがよろしくお願いします">
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="例：アプリ内チャット">
             </div>
 
             <div class="form-group">

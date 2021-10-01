@@ -18,7 +18,7 @@ class CreateReactionsTable extends Migration
             $table->unsignedBigInteger('from_user_id');
             $table->unsignedBigInteger('to_user_id');
             $table->unsignedBigInteger('post_id');
-            $table->boolean('status');
+            $table->softDeletes();
             $table->foreign('from_user_id')->references('id')->on('users');
             $table->foreign('to_user_id')->references('id')->on('users');
             $table->foreign('post_id')->references('id')->on('posts');

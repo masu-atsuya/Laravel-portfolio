@@ -4,9 +4,12 @@
 
 
 @include('layouts.header')
-
-
 <div class="container mt-3">
+@if (session('success'))
+<h4 class="success my-3 text-center mx-3">
+    {{ session('success') }}
+</h4>
+@endif
     @foreach($posts as $post)
     <a href="/show/{{$post->id}}">
         <div class="card mb-3 mx-auto" style="max-width: 600px;">
@@ -15,17 +18,15 @@
                     @if(!empty($post->user->profile->image))
                     <img src="{{ '/storage/' . $post->user->profile['image']}}" class="  img-fluid img-thumbnail rounded-circle" />
                     @else
-                    <img src="/storage/gamer.jpg" class="  img-fluid img-thumbnail rounded-circle">
-                    
+                    <img src="/storage/game_icon.png" class="  img-fluid img-thumbnail rounded-circle">
                     @endif
                 </div>
                 <div class="col-9">
-
                     <div class="card-body">
                         <h5 class="card-title">{{$post->title}}</h5>
                         <p class="card-text">name:{{$post->user->name}}</p>
                         <p class="card-text">game:{{$post->game->name}}</p>
-                        <p class="card-text">game:{{$post->game->name}}</p>
+                        <p class="card-text">:{{$post->type->name}}</p>
                     </div>
                 </div>
             </div>

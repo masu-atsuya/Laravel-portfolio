@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use App\Models\Reaction;
 use App\Models\User;
@@ -34,7 +34,7 @@ class ProfileController extends Controller
         return view('profile.create', compact('user'));
     }
 
-    public function store(Request $request)
+    public function store(ProfileRequest $request)
     {
 
         $profile = $request->all();
@@ -49,7 +49,7 @@ class ProfileController extends Controller
         Profile::insert([
             'user_id' => \Auth::id(),
             'game' => $profile['game'],
-            'content' => $profile['content'],
+            'content' => $profile['introduction'],
             'image' => $path[1],
         ]);
 
@@ -62,7 +62,7 @@ class ProfileController extends Controller
         $user = User::find(\Auth::id());
         return view('profile.edit', compact('user'));
     }
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
 
         $profile = $request->all();
@@ -76,7 +76,7 @@ class ProfileController extends Controller
         Profile::where('user_id', '=', \Auth::id())
             ->update([
             'game' => $profile['game'],
-            'content' => $profile['content'],
+            'content' => $profile['introduction'],
             'image' => $path[1],
         ]);
 

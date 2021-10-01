@@ -12,7 +12,6 @@
     @csrf
 
     <input type="hidden" name="to_user_id" value="{{$post->user->id}}">
-    <input type="hidden" name="status" value="1">
     <input type="hidden" name="post_id" value="{{$post->id}}">
     <div class="col-md-8 mx-auto my-5">
         <div class=" d-flex justify-content-center">

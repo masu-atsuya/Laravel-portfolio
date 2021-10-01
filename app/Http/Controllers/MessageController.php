@@ -7,19 +7,20 @@ use App\Models\Message;
 use App\Models\User;
 use App\Models\UserRoom;
 use App\Models\Room;
-use DB;
+use Carbon\Carbon;
 
+use function PHPUnit\Framework\isEmpty;
 
 class MessageController extends Controller
 {
     public function index()
     {
-        $rooms = UserRoom::select()
-            ->where('user_id', '=', \Auth::id())
+        $rooms = UserRoom::where('user_id', '=', \Auth::id())
             ->get();
-        if (!empty($rooms)) {
+        if (isEmpty($rooms)) {
             \Session::flash('err_msg', 'マッチングした投稿がありません');
             return redirect(route('match-index'));
+            
         }
         foreach ($rooms as $room) {
 
@@ -35,7 +36,7 @@ class MessageController extends Controller
                 ->first();
             $users[] = $user;
         }
-
+       
 
         return view('message.index', compact('users'));
     }
@@ -52,23 +53,29 @@ class MessageController extends Controller
 
     {
         Message::insert([
-            'comment' => $request->input('comment'),
+            'comment' => $request->comment,
             'room_id' => $request->room,
             'user_id' => $request->user,
 
         ]);
     }
-    public function show($id)
+    public function show($room_id, $user_id)
     {
 
         $room = Room::select('id')
-            ->where('id', '=', $id)
+            ->where('id', $room_id)
             ->first();
 
         $user = User::select('id')
-            ->where('id', '=', \Auth::id())
+            ->where('id', \Auth::id())
             ->first();
 
-        return view('message.show', compact('room', 'user'));
+        $from_user = User::with('profile')
+            ->where('id', $user_id)
+            ->first();
+        // dd($from_user);
+
+
+        return view('message.show', compact('room', 'user', 'from_user'));
     }
 }

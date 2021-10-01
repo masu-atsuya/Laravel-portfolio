@@ -29,7 +29,32 @@ class PostController extends Controller
     //投稿一覧を表示
     public function home()
     {
+        $exists = Reaction::where('from_user_id',\Auth::id())
+        ->exists();
 
+        
+        if($exists) {
+            
+            $actions = Reaction::select('post_id')
+            ->where('from_user_id',\Auth::id())
+            ->get();
+            
+            $posts = Post::with(['user' => function ($query) {
+                $query->with('profile');
+            }])
+                ->with('game', 'type', 'condition')
+                ->where('user_id', '!=', \Auth::id())
+                ->where(function($data) use($actions){
+                    foreach($actions as $action) {
+                        $data->where('id','!=',$action->post_id);
+                    };
+                })
+                ->whereNull('deleted_at')
+                ->orderBy('updated_at', 'DESC')
+                ->get();
+            return view('post.home', compact('posts'));
+
+        }
         $posts = Post::with(['user' => function ($query) {
             $query->with('profile');
         }])
@@ -38,10 +63,6 @@ class PostController extends Controller
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->get();
-
-
-
-
 
         return view('post.home', compact('posts'));
     }
@@ -59,10 +80,10 @@ class PostController extends Controller
     }
 
     //投稿作成ページ
-    public function store(Request $request)
+    public function store(PostCreateRequest $request)
     {
-        $posts = $request->all();
 
+        $posts = $request->all();
         Post::insert([
             'user_id' => \Auth::id(),
             'title' => $posts['title'],
@@ -71,11 +92,11 @@ class PostController extends Controller
             'content' => $posts['content'],
             'contact' => $posts['contact'],
             'condition_id' => $posts['condition_id'],
-
         ]);
 
 
 
+        \Session::flash('success', '投稿しました');
         return redirect(route('home'));
     }
 

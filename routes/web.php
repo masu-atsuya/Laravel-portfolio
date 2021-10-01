@@ -50,7 +50,9 @@ Route::post('/destroy', [PostController::class, 'destroy'])->name('destroy');
 //マッチング画面
 Route::get('/match', [MatchController::class, 'index'])->name('match-index');
 //承認待ちの画面
-Route::get('/match/show/{id}', [MatchController::class, 'show'])->name('match-show');
+Route::get('/match/post-show/{id}', [MatchController::class, 'post_show'])->name('match_post_show');
+//承認待ちの画面
+Route::post('/match/profile-show', [MatchController::class, 'profile_show'])->name('match_profile_show');
 //承認待ちの画面
 Route::post('/match/approval', [MatchController::class, 'approval'])->name('approval');
 
@@ -60,7 +62,7 @@ Route::get('/message/api/{id}', [MessageController::class, 'json_data'])->name('
 Route::post('/message/create/api', [MessageController::class, 'json_create'])->name('json_create');
 
 //チャットページでマッチングしたユーザー一覧表示
-Route::get('/message/show/{id}', [MessageController::class, 'show'])->name('message-show');
+Route::get('/message/show/{room_id}/{user_id}', [MessageController::class, 'show'])->name('message-show');
 //投稿への応募を情報を渡す
 Route::post('/entry', [MatchController::class, 'store'])->name('entry');
 

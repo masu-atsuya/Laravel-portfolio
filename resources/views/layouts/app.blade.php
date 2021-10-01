@@ -72,10 +72,10 @@
                                 </a>
 
                                 <a href="/home" class="dropdown-item">
-                                    投稿一覧
+                                    一覧
                                 </a>
                                 <a href="/create" class="dropdown-item">
-                                    投稿作成
+                                    作成
                                 </a>
                                 <a href="/match" class="dropdown-item">
                                     応募状況
@@ -104,13 +104,13 @@
     </div>
     <ul class="nav nav-pills nav-fill d-block d-sm-none fixed-bottom d-flex border bg-light">
         <li class="nav-item">
-            <a class="nav-link" href="/home">投稿一覧</a>
+            <a class="nav-link" href="/home">一覧</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/create">投稿作成</a>
+            <a class="nav-link" href="/create">作成</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/match">応募状況</a>
+            <a class="nav-link" href="/match">応募</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/message">チャット</a>
