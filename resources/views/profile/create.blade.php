@@ -4,7 +4,9 @@
 
 @section('content')
 
-@include('layouts.header')
+<div class="col-md-12 bg-success">
+    <h2 class="text-light text-center py-3 m-0">マイページ作成</h2>
+</div><!-- /.col -->
 
 
 <form class="" action="{{route('profile-store')}}" method="POST" enctype="multipart/form-data">

@@ -52,8 +52,6 @@ Route::get('/match', [MatchController::class, 'index'])->name('match-index');
 //承認待ちの画面
 Route::get('/match/post-show/{id}', [MatchController::class, 'post_show'])->name('match_post_show');
 //承認待ちの画面
-Route::post('/match/profile-show', [MatchController::class, 'profile_show'])->name('match_profile_show');
-//承認待ちの画面
 Route::post('/match/approval', [MatchController::class, 'approval'])->name('approval');
 
 //ajaxでユーザー一覧取得

@@ -3,7 +3,9 @@
 @section('content')
 
 
-@include('layouts.header')
+<div class="col-md-12 bg-success">
+    <h2 class="text-light text-center py-3 m-0">チャット</h2>
+</div><!-- /.col -->
 
 @foreach($users as $user)
 <a href="/message/show/{{$user->room->id}}/{{$user->user->id}}">

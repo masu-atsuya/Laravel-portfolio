@@ -2,7 +2,9 @@
 
 @section('content')
 
-@include('layouts.header')
+<div class="col-md-12 bg-success">
+    <h2 class="text-light text-center py-3 m-0">投稿作成</h2>
+</div><!-- /.col -->
 <div class="col-md-8 mx-auto">
 
 

@@ -16,25 +16,29 @@ class MessageController extends Controller
     public function index()
     {
         $rooms = UserRoom::where('user_id', '=', \Auth::id())
-            ->get();
-        if (isEmpty($rooms)) {
+        ->exists();
+        
+        if (!$rooms) {
             \Session::flash('err_msg', 'マッチングした投稿がありません');
             return redirect(route('match-index'));
             
-        }
-        foreach ($rooms as $room) {
-
-            $user = UserRoom::with(['user' => function ($query) {
-                $query->with('profile');
-            }])
-                ->with(['room' => function ($query) {
-                    $query->with('message');
+        }else {
+            $rooms = UserRoom::where('user_id', '=', \Auth::id())
+            ->get();
+            foreach ($rooms as $room) {
+    
+                $user = UserRoom::with(['user' => function ($query) {
+                    $query->with('profile');
                 }])
-                ->where('room_id', '=', $room['room_id'])
-                ->where('user_id', '!=', \Auth::id())
-                ->latest()
-                ->first();
-            $users[] = $user;
+                    ->with(['room' => function ($query) {
+                        $query->with('message');
+                    }])
+                    ->where('room_id', '=', $room['room_id'])
+                    ->where('user_id', '!=', \Auth::id())
+                    ->latest()
+                    ->first();
+                $users[] = $user;
+            }
         }
        
 
@@ -73,7 +77,7 @@ class MessageController extends Controller
         $from_user = User::with('profile')
             ->where('id', $user_id)
             ->first();
-        // dd($from_user);
+     
 
 
         return view('message.show', compact('room', 'user', 'from_user'));

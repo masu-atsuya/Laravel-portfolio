@@ -3,7 +3,9 @@
 @section('content')
 
 
-@include('layouts.header')
+<div class="col-md-12 bg-success">
+    <h2 class="text-light text-center py-3 m-0">自分の投稿一覧</h2>
+</div><!-- /.col -->
 <div class="container mt-3">
     @foreach($posts as $post)
     <a href="/show/{{$post->id}}">

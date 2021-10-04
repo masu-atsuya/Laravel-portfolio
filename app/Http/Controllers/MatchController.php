@@ -35,24 +35,40 @@ class MatchController extends Controller
             ->exists();
 
         if ($reactionsCheck) {
-            $toUsers = Reaction::with(['to_user' => function ($query) {
-                $query->with('profile');
-            }])
-                ->with('from_user', 'post')
-                ->where('from_user_id', '=', \Auth::id())
-                ->where('deleted_at', '=', null)
-                ->get();
 
+            $toUserExist = Reaction::where('from_user_id', '=', \Auth::id())
+            ->where('deleted_at', '=', null)
+            ->exists();
 
-            $fromUsers = Reaction::with(['from_user' => function ($query) {
-                $query->with('profile');
-            }])
-                ->with('to_user', 'post')
-                ->where('to_user_id', '=', \Auth::id())
-                ->where('deleted_at', '=', null)
-                ->get();
+            if($toUserExist) {
+                $toUsers = Reaction::with(['to_user' => function ($query) {
+                    $query->with('profile');
+                }])
+                    ->with('from_user', 'post')
+                    ->where('from_user_id', '=', \Auth::id())
+                    ->where('deleted_at', '=', null)
+                    ->get();
+            }else {
+                $toUsers = $toUserExist;
 
-                
+            }
+
+            $toFromExist = Reaction::where('to_user_id', '=', \Auth::id())
+            ->where('deleted_at', '=', null)
+            ->exists();
+
+            if($toFromExist) {
+                $fromUsers = Reaction::with(['from_user' => function ($query) {
+                    $query->with('profile');
+                }])
+                    ->with('to_user', 'post')
+                    ->where('to_user_id', '=', \Auth::id())
+                    ->where('deleted_at', '=', null)
+                    ->get();
+            }else {
+                $fromUsers = $toUserExist;
+            }
+
             return view('match.index', compact('fromUsers', 'toUsers'));
         } else {
 
@@ -86,7 +102,6 @@ class MatchController extends Controller
 
     public function  approval(Request $request)
     {
-
         DB::transaction(function () use ($request) {
 
             $room_id = Room::insertGetId([]);
@@ -104,14 +119,7 @@ class MatchController extends Controller
                 ->where('to_user_id', '=', \Auth::id())
                 ->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
         });
-
-
-
-
-        $room = UserRoom::with('user', 'room')
-            ->where('user_id', '=', \Auth::id())
-            ->get();
-
-        return view('message.index', compact('user', 'room'));
+     
+        return redirect(route('message-index'));
     }
 }

@@ -60,10 +60,10 @@ select:invalid,
   height: 140px;
 }
 
-.thumbnail-wrap {
-  top: 55%;
-  left: 50%;
-  transform: translateX(-50%);
+a:hover,
+a {
+  color: black;
+  text-decoration: none;
 }
 
 

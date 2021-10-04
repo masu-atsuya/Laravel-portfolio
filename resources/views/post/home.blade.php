@@ -3,16 +3,19 @@
 @section('content')
 
 
-@include('layouts.header')
+<div class="col-md-12 bg-success">
+    <h2 class="text-light text-center py-3 m-0">投稿一覧</h2>
+</div><!-- /.col -->
 <div class="container mt-3">
-@if (session('success'))
-<h4 class="success my-3 text-center mx-3">
-    {{ session('success') }}
-</h4>
-@endif
+    @if (session('success'))
+    <h4 class="success my-3 text-center mx-3">
+        {{ session('success') }}
+    </h4>
+    @endif
     @foreach($posts as $post)
-    <a href="/show/{{$post->id}}">
-        <div class="card mb-3 mx-auto" style="max-width: 600px;">
+
+    <div class="card mb-3 mx-auto" style="max-width: 600px;">
+        <a href="/show/{{$post->id}}">
             <div class="no-gutters d-flex">
                 <div class="col-3 justify-content-center align-items-center d-flex ">
                     @if(!empty($post->user->profile->image))
@@ -30,8 +33,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </a>
+        </a>
+    </div>
+
 
     @endforeach
 </div>
