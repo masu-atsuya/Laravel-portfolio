@@ -33,13 +33,16 @@ class MessageController extends Controller
                     ->with(['room' => function ($query) {
                         $query->with('message');
                     }])
+
                     ->where('room_id', '=', $room['room_id'])
                     ->where('user_id', '!=', \Auth::id())
                     ->latest()
                     ->first();
                 $users[] = $user;
             }
+            dd($users);
         }
+
        
 
         return view('message.index', compact('users'));
