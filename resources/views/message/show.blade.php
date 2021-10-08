@@ -15,6 +15,7 @@
 
 <div class=" container chat " ref="displayEnd">
     <realtime-message :room="{{$room->id}}" :my-id="{{$user->id}}"></realtime-message>
+
 </div>
 
 

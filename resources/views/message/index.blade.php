@@ -26,14 +26,14 @@
                     </div>
                 </div>
             </div>
-            <div class="">
+            
                 <div class=" text-right">
                     @if(!empty($user->room->message))
                     <p class="fs-1">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->room->message->created_at)
             ->format('H:i');}}</p>
                     @endif
                 </div>
-            </div>
+          
         </div>
     </div>
 </a>

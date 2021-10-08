@@ -40,35 +40,37 @@ class MatchController extends Controller
             ->where('deleted_at', '=', null)
             ->exists();
 
+            
             if($toUserExist) {
                 $toUsers = Reaction::with(['to_user' => function ($query) {
                     $query->with('profile');
                 }])
-                    ->with('from_user', 'post')
-                    ->where('from_user_id', '=', \Auth::id())
-                    ->where('deleted_at', '=', null)
-                    ->get();
+                ->with('from_user', 'post')
+                ->where('from_user_id', '=', \Auth::id())
+                ->where('deleted_at', '=', null)
+                ->get();
             }else {
                 $toUsers = $toUserExist;
-
+                
             }
 
-            $toFromExist = Reaction::where('to_user_id', '=', \Auth::id())
+            $fromUserExist = Reaction::where('to_user_id', '=', \Auth::id())
             ->where('deleted_at', '=', null)
             ->exists();
 
-            if($toFromExist) {
+            
+            if($fromUserExist) {
                 $fromUsers = Reaction::with(['from_user' => function ($query) {
                     $query->with('profile');
                 }])
-                    ->with('to_user', 'post')
-                    ->where('to_user_id', '=', \Auth::id())
-                    ->where('deleted_at', '=', null)
-                    ->get();
+                ->with('to_user', 'post')
+                ->where('to_user_id', '=', \Auth::id())
+                ->where('deleted_at', '=', null)
+                ->get();
             }else {
-                $fromUsers = $toUserExist;
+                $fromUsers = $fromUserExist;
             }
-
+            
             return view('match.index', compact('fromUsers', 'toUsers'));
         } else {
 

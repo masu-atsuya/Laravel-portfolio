@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Models\User;
 use App\Models\UserRoom;
 use App\Models\Room;
+use App\Events\MessageCreated;
 use Carbon\Carbon;
 
 use function PHPUnit\Framework\isEmpty;
@@ -16,17 +17,16 @@ class MessageController extends Controller
     public function index()
     {
         $rooms = UserRoom::where('user_id', '=', \Auth::id())
-        ->exists();
-        
+            ->exists();
+
         if (!$rooms) {
             \Session::flash('err_msg', 'マッチングした投稿がありません');
             return redirect(route('match-index'));
-            
-        }else {
+        } else {
             $rooms = UserRoom::where('user_id', '=', \Auth::id())
-            ->get();
+                ->get();
             foreach ($rooms as $room) {
-    
+
                 $user = UserRoom::with(['user' => function ($query) {
                     $query->with('profile');
                 }])
@@ -40,16 +40,14 @@ class MessageController extends Controller
                     ->first();
                 $users[] = $user;
             }
-            dd($users);
         }
 
-       
+
 
         return view('message.index', compact('users'));
     }
     public function json_data($id)
     {
-        // $messages = Message::all();
         $messages = Message::where('room_id', '=', $id)
             ->get();
         return [
@@ -57,14 +55,15 @@ class MessageController extends Controller
         ];
     }
     public function json_create(Request $request)
-
     {
-        Message::insert([
-            'comment' => $request->comment,
-            'room_id' => $request->room,
+        $message = Message::create([
             'user_id' => $request->user,
-
+            'room_id' => $request->room,
+            'comment' => $request->comment,
         ]);
+
+
+        broadcast(new MessageCreated($message));
     }
     public function show($room_id, $user_id)
     {
@@ -80,7 +79,7 @@ class MessageController extends Controller
         $from_user = User::with('profile')
             ->where('id', $user_id)
             ->first();
-     
+
 
 
         return view('message.show', compact('room', 'user', 'from_user'));
