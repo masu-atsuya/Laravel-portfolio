@@ -57,5 +57,8 @@ const vueContent = new Vue({
  
 });
 
+
+
+
 const displayEnd = vueContent.$refs.displayEnd;
 displayEnd.scrollTop = displayEnd.scrollHeight;

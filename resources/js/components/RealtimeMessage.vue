@@ -1,5 +1,4 @@
 <template>
- 
   <div id="vue-content">
     <div ref="displayEnd">
       <div v-for="message in messages" :key="message.id">
@@ -59,8 +58,6 @@ export default {
         user: this.myId,
         room: this.room,
       },
-
-     
     };
   },
 
@@ -70,7 +67,6 @@ export default {
         .get("/message/api/" + this.room)
         .then((response) => {
           this.messages = response.data.messages;
-          console.log(messages);
         })
         .catch((error) => {
           console.log(error);
@@ -87,13 +83,10 @@ export default {
   },
   mounted() {
     this.getMessage();
+    Echo.channel("chat").listen("MessageCreated", (e) => {
+      this.getMessage();
+    });
 
-      Echo.channel('chat')
-        .listen('MessageCreated', (e) => {
-
-            this.getMessages(); 
-
-        });
   },
 };
 </script>

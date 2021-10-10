@@ -63,7 +63,7 @@ class MessageController extends Controller
         ]);
 
 
-        broadcast(new MessageCreated($message));
+        event(new MessageCreated($message));
     }
     public function show($room_id, $user_id)
     {
