@@ -85,6 +85,7 @@ export default {
     this.getMessage();
     Echo.channel("chat").listen("MessageCreated", (e) => {
       this.getMessage();
+      
     });
 
   },
