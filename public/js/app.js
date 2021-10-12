@@ -19237,8 +19237,11 @@ __webpack_require__.r(__webpack_exports__);
     var _this3 = this;
 
     this.getMessage();
+    console.log('おはよう');
     Echo.channel("chat").listen("MessageCreated", function (e) {
       _this3.getMessage();
+
+      console.log('更新できたよ');
     });
   }
 });

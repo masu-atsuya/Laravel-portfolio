@@ -83,9 +83,10 @@ export default {
   },
   mounted() {
     this.getMessage();
+    console.log('おはよう')
     Echo.channel("chat").listen("MessageCreated", (e) => {
-      this.getMessage();
-      
+        this.getMessage();
+        console.log('更新できたよ')
     });
 
   },
