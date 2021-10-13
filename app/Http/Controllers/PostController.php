@@ -43,7 +43,6 @@ class PostController extends Controller
                 $query->with('profile');
             }])
                 ->with('game', 'type', 'condition')
-                ->where('user_id', '!=', \Auth::id())
                 ->where(function($data) use($actions){
                     foreach($actions as $action) {
                         $data->where('id','!=',$action->post_id);
@@ -106,18 +105,19 @@ class PostController extends Controller
             $query->with('profile');
         }])
             ->with('game', 'type', 'condition')
-            ->where('user_id', '!=', \Auth::id())
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->find($id);
-
-
+            
+            $user_id = Post::where('user_id', '=', \Auth::id())
+            ->where('id',$id)
+            ->exists();
 
         if (is_null($post)) {
             \Session::flash('err_msg', '投稿データがありません。');
             return redirect(route('home'));
         }
-        return view('post.show', compact('post'));
+        return view('post.show', compact('post','user_id'));
     }
 
 

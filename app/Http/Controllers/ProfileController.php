@@ -12,19 +12,17 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $profileCheck = Profile::where('user_id', '=', \Auth::id())
-            ->exists();
+      
+        $profile = Profile::with('user')
+            ->where('user_id', '=', \Auth::id())
+            ->first();
+
+            $user_name = User::where('id',\Auth::id())
+            ->select('name')
+            ->first();
 
 
-        if ($profileCheck) {
-
-            $profile = Profile::with('user')
-                ->where('user_id', '=', \Auth::id())
-                ->first();
-            return view('profile.index', compact('profile'));
-        } else {
-            return redirect(route('profile-create'));
-        }
+        return view('profile.index', compact('profile','user_name'));
     }
 //プロフ作成画面へ
     public function create()

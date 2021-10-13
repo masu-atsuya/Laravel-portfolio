@@ -21,7 +21,7 @@
         </div>
         <h4 class="text-center py-5">{{$post->user->name}}</h4>
         <div class="card mx-auto"  style="max-width: 600px;">
-            <div class="card  px-3 py-2">
+            <div class="  px-3 py-2">
                 <p class="card-ttl m-0 mb-2">タイトル</p>
                 <p class="card-text">{{$post->title}}</p>
             </div>

@@ -9,7 +9,7 @@
 
 @foreach($users as $user)
 <a href="/message/show/{{$user->room->id}}/{{$user->user->id}}">
-    <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card border-top-0 mx-auto " style="max-width: 600px;">
         <div class="d-flex py-3 px-3 justify-content-between">
             <div class=" d-flex">
                 @if(!empty($user->user->profile->image))
